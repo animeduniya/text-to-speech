@@ -29,7 +29,7 @@ h1 {
   font-size: 2em;
 }
 
-.theme-selector {
+.theme-selector, .bg-selector, .language-selector {
   margin-bottom: 20px;
 }
 
@@ -62,4 +62,28 @@ button:hover {
   --primary-color: #0d6efd;
   --bg-color: #333;
   --text-color: #fff;
+}
+
+.bg-image {
+  background-image: url('your-background-image-url.jpg');
+  background-size: cover;
+}
+
+.bg-rgb {
+  animation: rgbBG 5s infinite;
+}
+
+@keyframes rgbBG {
+  0% {
+    background-color: red;
+  }
+  33% {
+    background-color: green;
+  }
+  66% {
+    background-color: blue;
+  }
+  100% {
+    background-color: red;
+  }
 }
