@@ -28,7 +28,7 @@ document.getElementById('bg-options').addEventListener('change', function() {
   const body = document.body;
 
   if (bgOption === 'anime') {
-    body.style.backgroundImage = 'url("https://th.bing.com/th/id/R.01fa34812055352150a3912420430134?rik=rodEv3vM0Ku4oA&pid=ImgRaw&r=0")';
+    body.style.backgroundImage = 'url("https://images.hdqwalls.com/download/power-lines-moon-anime-quite-night-4k-pb-3840x2160.jpg")';
     body.style.backgroundColor = '';
   } else if (bgOption === 'rgb') {
     body.style.backgroundImage = '';
