@@ -7,19 +7,32 @@ async function convertTextToSpeech() {
         return;
     }
 
-    const apiKey = "YOUR_API_KEY"; // Replace with your VoiceRSS API key
-    const apiUrl = `https://api.voicerss.org/?key=${apiKey}&hl=en-us&src=${encodeURIComponent(textInput)}`;
+    // Construct the TTSMP3 URL
+    const ttsmp3Url = `https://ttsmp3.com/makemp3_new.php`;
+    const formData = new URLSearchParams({
+        msg: textInput,
+        lang: "Joanna", // Change the voice as needed (Joanna, Matthew, etc.)
+        source: "ttsmp3"
+    });
 
     try {
-        const response = await fetch(apiUrl);
+        // Make a POST request to TTSMP3
+        const response = await fetch(ttsmp3Url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData,
+        });
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch audio.");
+        const data = await response.json();
+
+        if (data.Error) {
+            throw new Error(data.Error);
         }
 
-        const audioBlob = await response.blob();
-        const audioUrl = URL.createObjectURL(audioBlob);
-
+        // Use the returned URL to play the audio
+        const audioUrl = data.URL;
         audioOutput.src = audioUrl;
         audioOutput.style.display = "block";
         audioOutput.play();
